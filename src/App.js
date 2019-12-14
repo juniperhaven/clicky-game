@@ -27,10 +27,17 @@ class App extends Component {
         // if the clicked array includes the id of the dog you just clicked, you lost
         // score is reset to 0, game status is set to the message for losing, and the clicked array is reset to empty
         if(clicked.includes(id)) {
-            this.setState({clicked: [], 
-                highScore: this.state.score,
-                gameStatus: "Game over! You lost. Click a dog to play again!"
-            });
+            if(this.state.highScore > this.state.score) {
+                this.setState({clicked: [],
+                    highScore: this.state.score,
+                    gameStatus: "Game over! You lost. Click a dog to play again!"
+                });
+            }
+            else {
+                this.setState({clicked: [],
+                    gameStatus: "Game over! You lost. Click a dog to play again!"
+                });
+            }
 
             console.log("You lost.");
         }
