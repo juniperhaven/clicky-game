@@ -1,0 +1,15 @@
+/* I really wanted to make the background a light blue-gray
+but when I tried that, for some reason it always had these two giant spots of whitespace on the sides
+I couldn't remember/figure out how to fix that
+so I just abandoned the idea 
+at lest for now */
+
+.wrapper {
+    padding-top: 10px;
+    height: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    margin-left: 300px;
+    margin-right: 300px;
+}
