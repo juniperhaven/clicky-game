@@ -12,6 +12,7 @@ class App extends Component {
         this.state = {puppies,
             clicked: [],
             score: 0,
+            highScore: 0,
             gameStatus: ""
         };
     }
@@ -27,7 +28,7 @@ class App extends Component {
         // score is reset to 0, game status is set to the message for losing, and the clicked array is reset to empty
         if(clicked.includes(id)) {
             this.setState({clicked: [], 
-                score: 0, 
+                highScore: this.state.score,
                 gameStatus: "Game over! You lost. Click a dog to play again!"
             });
 
@@ -44,6 +45,7 @@ class App extends Component {
             if(clicked.length === 9) {
                 this.setState({clicked: [],
                     score: 9,
+                    highScore: 9,
                     gameStatus: "Congratulations! You win! Click a dog to play again."
                 });
 
@@ -72,9 +74,16 @@ class App extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                    Dog Clicker Memory Game
+                    Dog Clicker Memory Game<br></br>
+                    <div className="rules">
+                        <b>Rules:</b>
+                        <p>1. The goal is to click all 9 images on the screen</p>
+                        <p>2. You can only click each image one time during a game; if you click the same one twice, you lose</p>
+                        <p>3. Each time you click on a dog, all the dog cards will rearrange</p>
+                    </div>
                 </header>
                 <Score total = {this.state.score}
+                    hs = {this.state.highScore}
                     status = {this.state.gameStatus}>
                 </Score>
                 <Wrapper>
